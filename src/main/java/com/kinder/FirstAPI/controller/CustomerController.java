@@ -4,6 +4,7 @@ import com.kinder.FirstAPI.exception.UserAlreadyExistException;
 import com.kinder.FirstAPI.exception.UserNotFoundException;
 import com.kinder.FirstAPI.model.Customer;
 import com.kinder.FirstAPI.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,11 +14,8 @@ import java.util.Optional;
 @RequestMapping("/api/customers")
 public class CustomerController {
 
-    private final CustomerRepository repository;
-
-    public CustomerController(CustomerRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private CustomerRepository repository;
 
     @GetMapping
     public List<Customer> findAll() {
